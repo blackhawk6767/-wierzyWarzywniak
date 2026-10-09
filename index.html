@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#284832">
+<meta name="description" content="Świeży Warzywniak w Janowie. Warzywa, owoce i jajka. Zapraszamy!">
+<title>Świeży Warzywniak | Janów</title>
+
+<style>
+:root {
+  --green: #284832;
+  --green2: #3e6945;
+  --cream: #fffaf0;
+  --light: #e9efdf;
+  --brown: #896443;
+  --text: #343b30;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.65;
+}
+
+header {
+  background: var(--green);
+  color: white;
+  padding: 16px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: .94rem;
+}
+
+nav a:hover { color: #d8e9bd; }
+
+.hero {
+  min-height: 480px;
+  padding: 90px 7%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, #dce8c9, transparent 70%),
+    var(--light);
+}
+
+.eyebrow {
+  color: var(--brown);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font: bold .8rem Arial, sans-serif;
+}
+
+h1 {
+  color: var(--green);
+  font-size: clamp(2.8rem, 8vw, 5.4rem);
+  line-height: 1.05;
+  margin: 20px 0;
+}
+
+.hero p {
+  max-width: 610px;
+  font-size: 1.15rem;
+  margin: 0 auto 25px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  padding: 13px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font: bold .95rem Arial, sans-serif;
+  transition: background .2s, transform .2s;
+}
+
+.btn:hover {
+  background: var(--green2);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  color: var(--green);
+  background: transparent;
+  border: 1px solid var(--green);
+}
+
+.btn-outline:hover {
+  color: white;
+}
+
+section { padding: 70px 7%; }
+
+.section-title {
+  color: var(--green);
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.intro {
+  max-width: 680px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 35px auto 0;
+}
+
+.card {
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e6e1d4;
+  border-radius: 16px;
+  text-align: center;
+  padding: 30px 22px;
+  box-shadow: 0 7px 24px #263b2009;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px #263b2018;
+}
+
+.food-icon {
+  font-size: 4rem;
+  line-height: 1.3;
+}
+
+.card h3 {
+  color: var(--green);
+  font-size: 1.5rem;
+  margin: 15px 0 8px;
+}
+
+.card p { margin-bottom: 0; }
+
+.about {
+  background: var(--light);
+  text-align: center;
+}
+
+.about-inner {
+  max-width: 760px;
+  margin: auto;
+}
+
+.about-symbol {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 900px;
+  margin: 35px auto 0;
+}
+
+.contact-card {
+  padding: 30px 20px;
+  border: 1px solid #e6e1d4;
+  border-radius: 14px;
+  text-align: center;
+  background: white;
+}
+
+.contact-card h3 { color: var(--green); }
+
+.contact-icon { font-size: 2.5rem; }
+
+.small {
+  font: .85rem Arial, sans-serif;
+  color: #68685c;
+}
+
+footer {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 28px 20px;
+}
+
+footer p { margin: 5px 0; }
+
+@media (max-width: 700px) {
+  header { justify-content: center; }
+  nav { justify-content: center; gap: 14px; }
+  .hero { padding: 65px 6%; min-height: 420px; }
+  section { padding: 50px 6%; }
+  .products { grid-template-columns: 1fr; max-width: 430px; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌿 Świeży Warzywniak</div>
+  <nav>
+    <a href="#oferta">Oferta</a>
+    <a href="#onas">O nas</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">Naturalnie • Świeżo • Lokalnie</div>
+    <h1>Smak natury<br>na Twoim stole.</h1>
+    <p>
+      Witamy w Świeżym Warzywniaku!
+      Znajdziesz u nas warzywa, owoce i jajka.
+      Zapraszamy na zakupy w Janowie.
+    </p>
+    <div class="buttons">
+      <a class="btn" href="#oferta">Poznaj naszą ofertę</a>
+      <a class="btn btn-outline"
+         href="https://maps.app.goo.gl/aRYCS89P8GpiHcwTA?g_st=ac"
+         target="_blank" rel="noopener">
+        📍 Jak do nas trafić
+      </a>
+    </div>
+  </section>
+
+  <section id="oferta">
+    <h2 class="section-title">Co u nas znajdziesz?</h2>
+    <p class="intro">
+      Poznaj naszą ofertę. Dostępność produktów może się zmieniać,
+      dlatego zapraszamy do sklepu, aby sprawdzić aktualny wybór.
+    </p>
+
+    <div class="products">
+      <article class="card">
+        <div class="food-icon">🥕</div>
+        <h3>Warzywa</h3>
+        <p>
+          Warzywa do codziennych obiadów, sałatek,
+          zup i domowych przepisów.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="food-icon">🍎</div>
+        <h3>Owoce</h3>
+        <p>
+          Kolorowe owoce na przekąskę,
+          do deserów i na każdą porę dnia.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="food-icon">🥚</div>
+        <h3>Jajka</h3>
+        <p>
+          Zajrzyj do nas i zapytaj o aktualną
+          dostępność jajek.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="onas" class="about">
+    <div class="about-inner">
+      <div class="about-symbol">🌱</div>
+      <h2 class="section-title">Witamy w naszym warzywniaku</h2>
+      <p>
+        Wierzymy, że dobre zakupy zaczynają się od prostych produktów.
+        Dlatego zapraszamy Cię do naszego sklepu z warzywami,
+        owocami i jajkami.
+      </p>
+      <p>
+        Wpadnij do nas, poznaj aktualną ofertę
+        i znajdź coś dobrego na swój stół!
+      </p>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <h2 class="section-title">Zapraszamy do nas!</h2>
+    <p class="intro">
+      Chcesz sprawdzić dostępność produktów?
+      Skontaktuj się z nami lub odwiedź nasz sklep.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Znajdź nas</h3>
+        <p>Janów, województwo śląskie</p>
+        <a class="btn"
+           href="https://maps.app.goo.gl/aRYCS89P8GpiHcwTA?g_st=ac"
+           target="_blank" rel="noopener">
+          Otwórz mapę
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <h3>Porozmawiajmy</h3>
+        <p>Napisz do nas i zapytaj o ofertę.</p>
+        <p class="small">
+          Link do Messengera lub WhatsAppa dodamy po otrzymaniu danych kontaktowych.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="logo">🌿 Świeży Warzywniak</div>
+  <p>Warzywa • Owoce • Jajka</p>
+  <p>Janów, województwo śląskie</p>
+  <p class="small" style="color:#e4eadf">
+    © <span id="year"></span> Świeży Warzywniak
+  </p>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
