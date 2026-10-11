@@ -1,370 +1,1180 @@
+```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#284832">
-<meta name="description" content="Świeży Warzywniak w Janowie. Warzywa, owoce i jajka. Zapraszamy!">
-<title>Świeży Warzywniak | Janów</title>
+<meta name="theme-color" content="#183d2b">
+<meta name="description" content="Świeży Warzywniak w Janowie. Poznaj naszą ofertę warzyw, owoców i jajek.">
+<title>Świeży Warzywniak | Smak natury</title>
 
 <style>
 :root {
-  --green: #284832;
-  --green2: #3e6945;
-  --cream: #fffaf0;
-  --light: #e9efdf;
-  --brown: #896443;
-  --text: #343b30;
+  --green: #214b32;
+  --green-dark: #153523;
+  --green-light: #dfead6;
+  --lime: #c7dc96;
+  --cream: #fbf8ee;
+  --paper: #fffdf7;
+  --brown: #8c6845;
+  --text: #26382b;
+  --muted: #718071;
+  --border: #e5e6d9;
+  --shadow: 0 15px 45px rgba(30, 65, 40, .09);
 }
 
-* { box-sizing: border-box; }
+body.dark {
+  --green: #c7dc96;
+  --green-dark: #14261b;
+  --green-light: #283b2b;
+  --cream: #17251b;
+  --paper: #223228;
+  --brown: #d9b58a;
+  --text: #f1f4e9;
+  --muted: #b4c0b0;
+  --border: #3b4c3c;
+  --shadow: 0 15px 45px rgba(0, 0, 0, .15);
+}
 
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
 
 body {
   margin: 0;
   background: var(--cream);
   color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.65;
+  transition: background .3s, color .3s;
+}
+
+button, input {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #98bb65;
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(1160px, 90%);
+  margin-inline: auto;
+}
+
+.topbar {
+  padding: 8px 12px;
+  text-align: center;
+  background: var(--lime);
+  color: #203a26;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 header {
-  background: var(--green);
-  color: white;
-  padding: 16px 6%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.logo {
-  font-size: 1.35rem;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.brand-icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  background: var(--green-light);
+  border-radius: 16px;
+  font-size: 25px;
+}
+
+.brand-name {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 1.2;
+  color: var(--green);
+}
+
+.brand-sub {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 13px;
   font-weight: bold;
 }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.nav-links a:hover {
+  color: var(--brown);
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-family: Arial, sans-serif;
-  font-size: .94rem;
+.icon-btn {
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 19px;
 }
-
-nav a:hover { color: #d8e9bd; }
 
 .hero {
-  min-height: 480px;
-  padding: 90px 7%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 64px 0 76px;
+  overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 0%, #dce8c9, transparent 70%),
-    var(--light);
+    radial-gradient(ellipse at 85% 30%, #d9e8c7 0, transparent 35%),
+    radial-gradient(ellipse at 0% 100%, #f0e5c8 0, transparent 36%),
+    var(--cream);
+}
+
+body.dark .hero {
+  background:
+    radial-gradient(ellipse at 85% 30%, #314c32 0, transparent 35%),
+    var(--cream);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 40px;
 }
 
 .eyebrow {
-  color: var(--brown);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font: bold .8rem Arial, sans-serif;
-}
-
-h1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  background: var(--green-light);
   color: var(--green);
-  font-size: clamp(2.8rem, 8vw, 5.4rem);
-  line-height: 1.05;
-  margin: 20px 0;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.hero p {
-  max-width: 610px;
-  font-size: 1.15rem;
-  margin: 0 auto 25px;
+.hero h1 {
+  margin: 23px 0 20px;
+  font-family: Georgia, serif;
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -2.8px;
+  color: var(--green);
 }
 
-.buttons {
+.hero h1 span {
+  color: var(--brown);
+  font-style: italic;
+}
+
+.hero-copy {
+  max-width: 500px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.actions {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 27px;
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 12px 19px;
+  border: 1px solid var(--green);
+  border-radius: 12px;
   background: var(--green);
   color: white;
-  padding: 13px 22px;
-  border-radius: 8px;
   text-decoration: none;
-  font: bold .95rem Arial, sans-serif;
-  transition: background .2s, transform .2s;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform .2s, opacity .2s;
 }
 
 .btn:hover {
-  background: var(--green2);
   transform: translateY(-2px);
+  opacity: .92;
 }
 
 .btn-outline {
   color: var(--green);
   background: transparent;
-  border: 1px solid var(--green);
 }
 
-.btn-outline:hover {
-  color: white;
-}
-
-section { padding: 70px 7%; }
-
-.section-title {
+body.dark .btn-outline {
   color: var(--green);
-  font-size: clamp(2rem, 5vw, 2.7rem);
-  text-align: center;
-  margin: 0 0 12px;
 }
 
-.intro {
-  max-width: 680px;
-  margin: 0 auto 35px;
-  text-align: center;
-}
-
-.products {
+.hero-art {
+  position: relative;
+  min-height: 400px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  max-width: 1100px;
-  margin: 35px auto 0;
+  place-items: center;
 }
 
-.card {
-  overflow: hidden;
-  background: white;
-  border: 1px solid #e6e1d4;
-  border-radius: 16px;
+.produce-orbit {
+  width: min(370px, 90%);
+  aspect-ratio: 1;
+  position: relative;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e8efda, #c8d9b5);
+  border: 1px solid #c5d4b5;
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+}
+
+.produce-center {
+  width: 73%;
+  height: 73%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--paper);
+  font-size: clamp(95px, 14vw, 155px);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.float {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  font-size: 42px;
+  animation: bob 4s ease-in-out infinite;
+}
+
+.float.one { top: 0; left: 4%; }
+.float.two { top: 14%; right: -1%; animation-delay: -1s; }
+.float.three { bottom: 2%; left: 9%; animation-delay: -2s; }
+.float.four { bottom: 7%; right: 3%; animation-delay: -3s; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
+
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.trust-row span::before {
+  content: "✓";
+  color: var(--green);
+  font-weight: bold;
+  margin-right: 7px;
+}
+
+.section {
+  padding: 82px 0;
+}
+
+.section-head {
   text-align: center;
-  padding: 30px 22px;
-  box-shadow: 0 7px 24px #263b2009;
+  max-width: 650px;
+  margin: 0 auto 35px;
+}
+
+.kicker {
+  color: var(--brown);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.section h2 {
+  font-family: Georgia, serif;
+  color: var(--green);
+  font-size: clamp(31px, 4vw, 46px);
+  line-height: 1.15;
+  margin: 10px 0;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.category {
+  position: relative;
+  overflow: hidden;
+  min-height: 215px;
+  padding: 26px;
+  text-align: left;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform .2s, border-color .2s;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+  border-color: var(--brown);
+}
+
+.category.selected {
+  border: 2px solid var(--green);
+  background: var(--green-light);
+}
+
+.category-icon {
+  display: block;
+  font-size: 52px;
+  margin-bottom: 15px;
+}
+
+.category strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 23px;
+  color: var(--green);
+}
+
+.category small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.category-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 22px;
+  color: var(--brown);
+}
+
+.catalog {
+  background: var(--green-light);
+}
+
+.catalog .section-head {
+  margin-bottom: 25px;
+}
+
+.catalog-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.search-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.search-wrap input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 16px 12px 43px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--text);
+}
+
+.search-icon {
+  position: absolute;
+  top: 13px;
+  left: 14px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.filter {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid #bac8b1;
+  border-radius: 30px;
+  background: var(--paper);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.filter.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.product {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   transition: transform .2s, box-shadow .2s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px #263b2018;
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
-.food-icon {
-  font-size: 4rem;
-  line-height: 1.3;
+.product-visual {
+  min-height: 145px;
+  display: grid;
+  place-items: center;
+  background: var(--green-light);
+  border-radius: 12px;
+  font-size: 70px;
 }
 
-.card h3 {
+.product-tag {
+  align-self: flex-start;
+  margin-top: 15px;
+  padding: 4px 8px;
+  border-radius: 30px;
+  background: var(--green-light);
   color: var(--green);
-  font-size: 1.5rem;
-  margin: 15px 0 8px;
+  font-size: 10px;
+  font-weight: bold;
 }
 
-.card p { margin-bottom: 0; }
+.product h3 {
+  margin: 10px 0 4px;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  color: var(--green);
+}
+
+.product p {
+  flex: 1;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 15px;
+}
+
+.add-btn {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px;
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--green);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.add-btn:hover {
+  background: var(--green);
+  color: white;
+}
+
+.empty {
+  text-align: center;
+  padding: 35px;
+  color: var(--muted);
+}
+
+.note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+.shopping {
+  border: 1px solid var(--border);
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 35px;
+}
+
+.shopping-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.shopping-head h3 {
+  color: var(--green);
+  font-family: Georgia, serif;
+  font-size: 24px;
+  margin: 0;
+}
+
+.counter {
+  display: inline-grid;
+  place-items: center;
+  min-width: 27px;
+  height: 27px;
+  padding: 0 7px;
+  background: var(--lime);
+  color: #203a26;
+  border-radius: 50%;
+  font: bold 12px Arial, sans-serif;
+}
+
+.shopping-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.shopping-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.shopping-list li span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.remove-btn {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.shopping-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
 .about {
-  background: var(--light);
-  text-align: center;
+  background: var(--paper);
 }
 
-.about-inner {
-  max-width: 760px;
-  margin: auto;
+.about-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 55px;
+  align-items: center;
 }
 
-.about-symbol {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.about-illustration {
+  min-height: 330px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 25%, #e3eacc, transparent 38%),
+    var(--green-light);
+  font-size: 115px;
+}
+
+.about-copy p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.value {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.value b {
+  display: block;
+  color: var(--green);
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.contact {
+  background: var(--green-dark);
+  color: #fffdf5;
+}
+
+.contact .section h2,
+.contact h2 {
+  color: #e5efce;
+}
+
+.contact .section-head p {
+  color: #c0d0bd;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  max-width: 900px;
-  margin: 35px auto 0;
+  gap: 20px;
 }
 
 .contact-card {
-  padding: 30px 20px;
-  border: 1px solid #e6e1d4;
-  border-radius: 14px;
-  text-align: center;
-  background: white;
+  padding: 28px;
+  border: 1px solid #46604a;
+  border-radius: 18px;
+  background: #203d2a;
 }
 
-.contact-card h3 { color: var(--green); }
+.contact-icon {
+  font-size: 36px;
+}
 
-.contact-icon { font-size: 2.5rem; }
+.contact-card h3 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin: 12px 0 5px;
+}
 
-.small {
-  font: .85rem Arial, sans-serif;
-  color: #68685c;
+.contact-card p {
+  color: #c4d0c0;
+  font-size: 13px;
+}
+
+.contact .btn {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: #203a26;
+  margin-top: 10px;
 }
 
 footer {
-  background: var(--green);
-  color: white;
+  padding: 32px 0;
+  background: var(--green-dark);
+  border-top: 1px solid #46604a;
+  color: #dce7d7;
   text-align: center;
-  padding: 28px 20px;
 }
 
-footer p { margin: 5px 0; }
+.footer-brand {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 21px;
+}
 
-@media (max-width: 700px) {
-  header { justify-content: center; }
-  nav { justify-content: center; gap: 14px; }
-  .hero { padding: 65px 6%; min-height: 420px; }
-  section { padding: 50px 6%; }
-  .products { grid-template-columns: 1fr; max-width: 430px; }
-  .contact-grid { grid-template-columns: 1fr; }
+footer p {
+  font-size: 12px;
+  color: #b6c6b3;
+}
+
+.toast {
+  position: fixed;
+  z-index: 30;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  max-width: 90%;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: var(--green-dark);
+  color: white;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  text-align: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.reveal {
+  animation: appear .6s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .hero-grid, .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    min-height: 340px;
+  }
+
+  .produce-orbit {
+    width: 290px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .category {
+    min-height: 170px;
+  }
+
+  .about-illustration {
+    min-height: 230px;
+  }
+}
+
+@media (max-width: 580px) {
+  .container {
+    width: 92%;
+  }
+
+  .nav {
+    padding: 12px 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 45px 0;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero-art {
+    min-height: 285px;
+  }
+
+  .produce-orbit {
+    width: 235px;
+  }
+
+  .float {
+    width: 58px;
+    height: 58px;
+    font-size: 31px;
+    border-radius: 17px;
+  }
+
+  .section {
+    padding: 55px 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .product {
+    padding: 11px;
+  }
+
+  .product-visual {
+    min-height: 105px;
+    font-size: 53px;
+  }
+
+  .product h3 {
+    font-size: 17px;
+  }
+
+  .product p {
+    font-size: 11px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shopping {
+    padding: 16px;
+  }
+
+  .values {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+  🌿 ŚWIEŻE INSPIRACJE NA TWÓJ STÓŁ · JANÓW
+</div>
+
 <header>
-  <div class="logo">🌿 Świeży Warzywniak</div>
-  <nav>
-    <a href="#oferta">Oferta</a>
-    <a href="#onas">O nas</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Świeży Warzywniak — strona główna">
+      <div class="brand-icon">🌿</div>
+      <div>
+        <div class="brand-name">Świeży Warzywniak</div>
+        <div class="brand-sub">WARZYWA · OWOCE · JAJKA</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Główna nawigacja">
+      <a href="#home">Start</a>
+      <a href="#kategorie">Kategorie</a>
+      <a href="#sklep">Produkty</a>
+      <a href="#onas">O nas</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <button class="icon-btn" id="themeToggle"
+      type="button" aria-label="Włącz tryb ciemny"
+      title="Zmień motyw">🌙</button>
+  </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="eyebrow">Naturalnie • Świeżo • Lokalnie</div>
-    <h1>Smak natury<br>na Twoim stole.</h1>
-    <p>
-      Witamy w Świeżym Warzywniaku!
-      Znajdziesz u nas warzywa, owoce i jajka.
-      Zapraszamy na zakupy w Janowie.
-    </p>
-    <div class="buttons">
-      <a class="btn" href="#oferta">Poznaj naszą ofertę</a>
-      <a class="btn btn-outline"
-         href="https://maps.app.goo.gl/aRYCS89P8GpiHcwTA?g_st=ac"
-         target="_blank" rel="noopener">
-        📍 Jak do nas trafić
-      </a>
-    </div>
-  </section>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">🌱 Blisko natury</div>
+      <h1>Dobry smak.<br><span>Proste wybory.</span></h1>
 
-  <section id="oferta">
-    <h2 class="section-title">Co u nas znajdziesz?</h2>
-    <p class="intro">
-      Poznaj naszą ofertę. Dostępność produktów może się zmieniać,
-      dlatego zapraszamy do sklepu, aby sprawdzić aktualny wybór.
-    </p>
-
-    <div class="products">
-      <article class="card">
-        <div class="food-icon">🥕</div>
-        <h3>Warzywa</h3>
-        <p>
-          Warzywa do codziennych obiadów, sałatek,
-          zup i domowych przepisów.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="food-icon">🍎</div>
-        <h3>Owoce</h3>
-        <p>
-          Kolorowe owoce na przekąskę,
-          do deserów i na każdą porę dnia.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="food-icon">🥚</div>
-        <h3>Jajka</h3>
-        <p>
-          Zajrzyj do nas i zapytaj o aktualną
-          dostępność jajek.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section id="onas" class="about">
-    <div class="about-inner">
-      <div class="about-symbol">🌱</div>
-      <h2 class="section-title">Witamy w naszym warzywniaku</h2>
-      <p>
-        Wierzymy, że dobre zakupy zaczynają się od prostych produktów.
-        Dlatego zapraszamy Cię do naszego sklepu z warzywami,
-        owocami i jajkami.
+      <p class="hero-copy">
+        Odkryj nasz warzywniak w Janowie.
+        Warzywa, owoce i jajka — produkty, które
+        pasują do codziennej, domowej kuchni.
       </p>
+
+      <div class="actions">
+        <a class="btn" href="#sklep">🥕 Poznaj ofertę <span>→</span></a>
+        <a class="btn btn-outline"
+          href="https://maps.app.goo.gl/aRYCS89P8GpiHcwTA?g_st=ac"
+          target="_blank" rel="noopener">📍 Dojazd do sklepu</a>
+      </div>
+
+      <div class="trust-row">
+        <span>Trzy główne kategorie</span>
+        <span>Bez wyświetlania cen</span>
+        <span>Janów</span>
+      </div>
+    </div>
+
+    <div class="hero-art reveal" aria-label="Ilustracja produktów spożywczych">
+      <div class="produce-orbit">
+        <div class="produce-center">🧺</div>
+        <div class="float one">🍎</div>
+        <div class="float two">🥕</div>
+        <div class="float three">🥚</div>
+        <div class="float four">🥬</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kategorie">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Nasza oferta</div>
+      <h2>Co dziś wybierasz?</h2>
       <p>
-        Wpadnij do nas, poznaj aktualną ofertę
-        i znajdź coś dobrego na swój stół!
+        Wybierz kategorię i przejdź do produktów.
+        Dostępność asortymentu może się zmieniać.
       </p>
     </div>
-  </section>
 
-  <section id="kontakt">
-    <h2 class="section-title">Zapraszamy do nas!</h2>
-    <p class="intro">
-      Chcesz sprawdzić dostępność produktów?
-      Skontaktuj się z nami lub odwiedź nasz sklep.
+    <div class="categories">
+      <button class="category" type="button" data-jump="Warzywa">
+        <span class="category-icon">🥕</span>
+        <strong>Warzywa</strong>
+        <small>Do obiadów, sałatek i domowych przepisów.</small>
+        <span class="category-arrow">↗</span>
+      </button>
+
+      <button class="category" type="button" data-jump="Owoce">
+        <span class="category-icon">🍎</span>
+        <strong>Owoce</strong>
+        <small>Na przekąskę i na słodką chwilę.</small>
+        <span class="category-arrow">↗</span>
+      </button>
+
+      <button class="category" type="button" data-jump="Jajka">
+        <span class="category-icon">🥚</span>
+        <strong>Jajka</strong>
+        <small>Sprawdź aktualną dostępność w sklepie.</small>
+        <span class="category-arrow">↗</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="section catalog" id="sklep">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Poznaj asortyment</div>
+      <h2>Mały katalog, wielkie możliwości.</h2>
+      <p>
+        Wyszukuj przykładowe produkty, filtruj kategorie
+        i dodawaj pozycje do własnej listy zakupów.
+      </p>
+    </div>
+
+    <div class="catalog-tools">
+      <div class="search-wrap">
+        <span class="search-icon">🔎</span>
+        <input id="searchInput" type="search"
+          placeholder="Szukaj produktu..."
+          aria-label="Wyszukaj produkt">
+      </div>
+    </div>
+
+    <div class="filters" id="filters" aria-label="Filtry produktów">
+      <button class="filter active" type="button" data-filter="Wszystko">Wszystko</button>
+      <button class="filter" type="button" data-filter="Warzywa">🥕 Warzywa</button>
+      <button class="filter" type="button" data-filter="Owoce">🍎 Owoce</button>
+      <button class="filter" type="button" data-filter="Jajka">🥚 Jajka</button>
+    </div>
+
+    <div class="product-grid" id="productGrid" aria-live="polite"></div>
+
+    <p class="note">
+      Produkty prezentowane na stronie są przykładowe.
+      Nie stanowią potwierdzenia aktualnej dostępności.
     </p>
+
+    <div class="shopping" id="lista">
+      <div class="shopping-head">
+        <h3>🧺 Moja lista zakupów</h3>
+        <span class="counter" id="cartCount" aria-label="Liczba pozycji">0</span>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted)">
+        Dodaj produkty z katalogu i przygotuj własną listę.
+        Możesz ją skopiować lub wydrukować.
+      </p>
+
+      <ul class="shopping-list" id="shoppingList">
+        <li id="emptyCart">Twoja lista jest pusta. Dodaj pierwszy produkt!</li>
+      </ul>
+
+      <div class="shopping-actions">
+        <button class="btn" type="button" id="copyList">📋 Kopiuj listę</button>
+        <button class="btn btn-outline" type="button" id="printList">🖨️ Drukuj</button>
+        <button class="btn btn-outline" type="button" id="clearList">Wyczyść listę</button>
+      </div>
+
+      <p class="note">
+        Lista służy do planowania zakupów i nie jest zamówieniem sklepowym.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="onas">
+  <div class="container about-grid">
+    <div class="about-illustration" aria-hidden="true">🌻</div>
+
+    <div class="about-copy">
+      <div class="kicker">Kilka słów o nas</div>
+      <h2>Warzywniak z naturalnym klimatem.</h2>
+      <p>
+        Zapraszamy do naszego sklepu w Janowie,
+        gdzie znajdziesz warzywa, owoce i jajka.
+      </p>
+      <p>
+        Zajrzyj do nas, poznaj aktualny asortyment
+        i wybierz coś na swój stół.
+      </p>
+
+      <div class="values">
+        <div class="value">
+          <b>🥕 Warzywa</b>
+          Poznaj dostępny wybór.
+        </div>
+        <div class="value">
+          <b>🍎 Owoce</b>
+          Sprawdź aktualny asortyment.
+        </div>
+        <div class="value">
+          <b>🥚 Jajka</b>
+          Zapytaj o dostępność.
+        </div>
+        <div class="value">
+          <b>📍 Janów</b>
+          Odwiedź nasz sklep.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker" style="color:#c7dc96">Zapraszamy</div>
+      <h2>Do zobaczenia w sklepie!</h2>
+      <p>
+        Chcesz zapytać o aktualną dostępność produktów?
+        Odwiedź nas lub skorzystaj z uzupełnionych danych kontaktowych.
+      </p>
+    </div>
 
     <div class="contact-grid">
       <div class="contact-card">
         <div class="contact-icon">📍</div>
-        <h3>Znajdź nas</h3>
-        <p>Janów, województwo śląskie</p>
+        <h3>Znajdź nas w Janowie</h3>
+        <p>Otwórz mapę i sprawdź lokalizację sklepu.</p>
         <a class="btn"
-           href="https://maps.app.goo.gl/aRYCS89P8GpiHcwTA?g_st=ac"
-           target="_blank" rel="noopener">
-          Otwórz mapę
-        </a>
+          href="https://maps.app.goo.gl/aRYCS89P8GpiHcwTA?g_st=ac"
+          target="_blank" rel="noopener">Otwórz mapę ↗</a>
       </div>
 
       <div class="contact-card">
         <div class="contact-icon">💬</div>
-        <h3>Porozmawiajmy</h3>
-        <p>Napisz do nas i zapytaj o ofertę.</p>
-        <p class="small">
-          Link do Messengera lub WhatsAppa dodamy po otrzymaniu danych kontaktowych.
+        <h3>Kontakt z nami</h3>
+        <p>
+          Messenger i WhatsApp pojawią się tutaj,
+          gdy uzupełnisz prawdziwe linki kontaktowe.
         </p>
+        <span style="font-size:12px;color:#c4d0c0">
+          Dane kontaktowe do uzupełnienia.
+        </span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer>
-  <div class="logo">🌿 Świeży Warzywniak</div>
-  <p>Warzywa • Owoce • Jajka</p>
-  <p>Janów, województwo śląskie</p>
-  <p class="small" style="color:#e4eadf">
-    © <span id="year"></span> Świeży Warzywniak
-  </p>
+  <div class="container">
+    <div class="footer-brand">🌿 Świeży Warzywniak</div>
+    <p>Warzywa · Owoce · Jajka</p>
+    <p>Janów, województwo śląskie</p>
+    <p>© <span id="year"></span> Świeży Warzywniak</p>
+  </div>
 </footer>
 
-<script>
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-</script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-</body>
-</html>
+<script>
+(() => {
+  "use strict";
+
+  const products = [
+    {name:"Marchew", cat:"Warzywa", icon:"🥕", desc:"Do zup, surówek i obiadów."},
+    {name:"Pomidory", cat:"Warzywa", icon:"🍅", desc:"Do kanapek, sosów i sałatek."},
+    {name:"Ogórki", cat:"Warzywa", icon:"🥒", desc:"Do świeżych sałatek."},
+    {name:"Ziemniaki", cat:"Warzywa", icon:"🥔", desc:"Klasyczny dodatek do obiadu."},
+    {name:"Cebula", cat:"Warzywa", icon:"🧅", desc:"Do wielu domowych przepisów."},
+    {name:"Papryka", cat:"Warzywa", icon:"🫑", desc:"Kolorowy dodatek do posiłków."},
+    {name:"Sałata", cat:"Warzywa", icon:"🥬", desc:"Do lekkich sałatek."},
+    {name:"Czosnek", cat:"Warzywa", icon:"🧄", desc:"Aromatyczny składnik potraw."},
+    {name:"Jabłka", cat:"Owoce", icon:"🍎", desc:"Owocowa przekąska."},
+    {name:"Gruszki", cat:"Owoce", icon:"🍐", desc:"Do deserów i przekąsek."},
+    {name:"Banany", cat:"Owoce", icon:"🍌", desc:"Na drugie śniadanie."},
+```
